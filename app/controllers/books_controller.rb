@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :check_book_user, only: [:edit, :update, :destroy]
-  
+
   def index
     @user = current_user
     @book = Book.new
@@ -9,12 +9,15 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+
+    #何故、↓を入れないと投稿の際、user must exit errorが起きるのか？
+    @book.user_id = current_user.id
     if @book.save
       redirect_to book_path(@book), notice: "You have created book successfully"
     else
       @user = current_user
       @books = Book.all
-      redirect_to books_path
+      render :index
     end
   end
 
@@ -25,7 +28,7 @@ class BooksController < ApplicationController
   end
 
   def edit
-    　
+
     @book = Book.find(params[:id])
   end
 
