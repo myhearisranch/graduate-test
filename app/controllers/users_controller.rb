@@ -33,7 +33,8 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "You have updated user successfully"
     else
-      redirect_to edit_user_path(@user)
+      #redirect_to edit_user_path(@user)
+      render :edit
     end
   end
 
