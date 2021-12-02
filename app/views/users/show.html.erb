@@ -3,7 +3,9 @@
     <div class="col-md-3">
       <%= render "users/user_info", user: @user %>
 
-      <%# @bookを@new_bookにしたら投稿できるようになったのは何故ですか？%>
+      <%# @bookを@new_bookにしたら投稿できるようになったのは何故ですか？
+      ターミナルを確認してみた所、投稿する場合 post /book
+      しかし、投稿出来ない時はpost book/id になっていた%>
 
       <%= render "books/new_book", new_book: @new_book %>
     </div>
