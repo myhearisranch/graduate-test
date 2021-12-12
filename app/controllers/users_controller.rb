@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @new_book = Book.new
     @books = Book.where(user_id:@user.id)
+    #ここに定義されてないものをform_withで使おうとすると自動的にコントローラーに対応するものを作ろうとする
   end
 
   def edit

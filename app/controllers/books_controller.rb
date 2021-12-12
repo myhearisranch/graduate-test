@@ -11,6 +11,8 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     #何故、↓を入れないと投稿の際、user must exit errorが起きるのか？
+    #アソシエーションにより、bookには誰が投稿したかという情報を持たせる必要がある
+
     @book.user_id = current_user.id
     if @book.save
       redirect_to book_path(@book), notice: "You have created book successfully"
